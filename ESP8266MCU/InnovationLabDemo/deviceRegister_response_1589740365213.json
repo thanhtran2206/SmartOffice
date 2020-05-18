@@ -1,0 +1,157 @@
+{
+  "id": "net.tranminhthanh.smartthing:device02",
+  "hub": {
+    "credentials": {
+      "tenantId": "tbb53c83d08534d4bacd3b83d1588ae67_hub",
+      "type": "hashed-password",
+      "secrets": [
+        {
+          "password": "thanh123456"
+        }
+      ],
+      "deviceId": "net.tranminhthanh.smartthing:device02",
+      "authId": "net.tranminhthanh.smartthing_device02",
+      "adapters": [
+        {
+          "type": "http",
+          "uri": "https://http.bosch-iot-hub.com",
+          "host": "http.bosch-iot-hub.com",
+          "port": 443
+        },
+        {
+          "type": "mqtt",
+          "uri": "mqtts://mqtt.bosch-iot-hub.com",
+          "host": "mqtt.bosch-iot-hub.com",
+          "port": 8883
+        },
+        {
+          "type": "gateway-software",
+          "uri": "https://gateway-software.bosch-iot-hub.com/httptrprt",
+          "host": "gateway-software.bosch-iot-hub.com",
+          "port": 443
+        },
+        {
+          "type": "amqp",
+          "uri": "amqps://amqp.bosch-iot-hub.com",
+          "host": "amqp.bosch-iot-hub.com",
+          "port": 5671
+        }
+      ]
+    },
+    "device": {
+      "enabled": true,
+      "deviceId": "net.tranminhthanh.smartthing:device02"
+    }
+  },
+  "things": {
+    "thing": {
+      "attributes": {
+        "manufacturer": "Thanh IoT Lab"
+      },
+      "features": {
+        "temperature": {
+          "definition": [
+            "org.eclipse.vorto:Temperature:1.0.0"
+          ],
+          "properties": {
+            "status": {
+              "value": {
+                "currentMeasured": 0,
+                "minMeasured": -999,
+                "maxMeasured": 999
+              }
+            }
+          }
+        },
+        "humidity": {
+          "definition": [
+            "org.eclipse.vorto:Humidity:1.0.0"
+          ],
+          "properties": {
+            "status": {
+              "value": {
+                "currentMeasured": 0,
+                "minMeasured": -999,
+                "maxMeasured": 999
+              }
+            }
+          }
+        },
+        "illuminance": {
+          "definition": [
+            "org.eclipse.vorto:Illuminance:1.0.0"
+          ],
+          "properties": {
+            "status": {
+              "value": {
+                "currentMeasured": 555,
+                "minMeasured": 0,
+                "maxMeasured": 999
+              }
+            }
+          }
+        }
+      },
+      "thingId": "net.tranminhthanh.smartthing:device02",
+      "policyId": "net.tranminhthanh.smartthing:device02",
+      "_policy": {
+        "policyId": "net.tranminhthanh.smartthing:device02",
+        "entries": {
+          "DEFAULT": {
+            "subjects": {
+              "iot-suite:/service-instance.bb53c83d-0853-4d4b-acd3-b83d1588ae67.iot-things@d716fc5f-e51c-4aeb-9dc1-b9fddf6f5061": {
+                "type": "suite-auth"
+              }
+            },
+            "resources": {
+              "policy:/": {
+                "grant": [
+                  "READ",
+                  "WRITE"
+                ],
+                "revoke": []
+              },
+              "thing:/": {
+                "grant": [
+                  "READ",
+                  "WRITE"
+                ],
+                "revoke": []
+              },
+              "message:/": {
+                "grant": [
+                  "READ",
+                  "WRITE"
+                ],
+                "revoke": []
+              }
+            }
+          },
+          "DEVICE": {
+            "subjects": {
+              "integration:bb53c83d-0853-4d4b-acd3-b83d1588ae67_things:hub": {
+                "type": "iot-things-integration"
+              }
+            },
+            "resources": {
+              "thing:/": {
+                "grant": [
+                  "READ",
+                  "WRITE"
+                ],
+                "revoke": []
+              },
+              "message:/": {
+                "grant": [
+                  "READ",
+                  "WRITE"
+                ],
+                "revoke": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
